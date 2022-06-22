@@ -1,3 +1,3 @@
-FROM mackerel/mkr:v0.46.7
+FROM mackerel/mkr:v0.46.8
 
 RUN apk add --no-cache git
