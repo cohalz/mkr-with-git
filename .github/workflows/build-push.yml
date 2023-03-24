@@ -29,7 +29,7 @@ jobs:
         run: |
           mkr_version=$(cat Dockerfile | perl -ne 'print $1 if /^FROM mackerel\/mkr:(v[0-9.]+)/')
           echo "::set-output name=mkr_version::$mkr_version"
-      - uses: docker/build-push-action@v3
+      - uses: docker/build-push-action@v4
         with:
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
@@ -41,7 +41,7 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: docker/build-push-action@v3
+      - uses: docker/build-push-action@v4
         if: github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/tags/')
         with:
           push: true
